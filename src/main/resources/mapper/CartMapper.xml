@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.baozi.hmygbackend.mapper.CartMapper">
+
+    <resultMap id="BaseResultMap" type="com.baozi.hmygbackend.entity.GoodsCartDto">
+            <id property="userId" column="user_id" jdbcType="INTEGER"/>
+            <result property="goodsId" column="goods_id" jdbcType="BIGINT"/>
+            <result property="goodsName" column="goods_name" jdbcType="VARCHAR"/>
+            <result property="goodsPrice" column="goods_price" jdbcType="BIGINT"/>
+            <result property="goodsCount" column="goods_count" jdbcType="BIGINT"/>
+            <result property="goodsSmallLogo" column="goods_small_logo" jdbcType="VARCHAR"/>
+            <result property="goodsState" column="goods_state" jdbcType="BIGINT"/>
+    </resultMap>
+
+    <insert id="saveCart">
+        insert into tb_cart(user_id, goods_id, goods_name, goods_price, goods_count, goods_small_logo, goods_state)
+        values(#{userId},#{goodsId},#{goodsName},#{goodsPrice},#{goodsCount},#{goodsSmallLogo},#{state})
+    </insert>
+    <update id="updateGoodsCount">
+        update tb_cart set goods_count=#{goodsCount} where user_id = #{userId} and goods_id = #{goodsId}
+    </update>
+    <update id="updateGoodsState">
+        update tb_cart set goods_state=#{goodsState} where user_id = #{userId} and goods_id = #{goodsId}
+    </update>
+</mapper>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.baozi.hmygbackend.mapper.GoodsDetailMapper">
+
+    <resultMap id="BaseResultMap" type="com.baozi.hmygbackend.entity.GoodsDetail">
+            <result property="goodsName" column="goods_name" jdbcType="VARCHAR"/>
+            <result property="hotMumber" column="hot_mumber" jdbcType="BIGINT"/>
+            <result property="goodsPrice" column="goods_price" jdbcType="BIGINT"/>
+            <result property="goodsSmallLogo" column="goods_small_logo" jdbcType="VARCHAR"/>
+            <result property="goodsId" column="goods_id" jdbcType="BIGINT"/>
+            <result property="catOneId" column="cat_one_id" jdbcType="BIGINT"/>
+            <result property="goodsCat" column="goods_cat" jdbcType="VARCHAR"/>
+            <result property="goodsIntroduce" column="goods_introduce" jdbcType="VARCHAR"/>
+            <result property="goodsBigLogo" column="goods_big_logo" jdbcType="VARCHAR"/>
+            <result property="goodsNumber" column="goods_number" jdbcType="BIGINT"/>
+            <result property="isPromote" column="is_promote" jdbcType="TINYINT"/>
+            <result property="catTwoId" column="cat_two_id" jdbcType="BIGINT"/>
+            <result property="catId" column="cat_id" jdbcType="BIGINT"/>
+            <result property="isDel" column="is_del" jdbcType="VARCHAR"/>
+            <result property="goodsState" column="goods_state" jdbcType="BIGINT"/>
+            <result property="updTime" column="upd_time" jdbcType="BIGINT"/>
+            <result property="catThreeId" column="cat_three_id" jdbcType="BIGINT"/>
+            <result property="addTime" column="add_time" jdbcType="BIGINT"/>
+            <result property="goodsWeight" column="goods_weight" jdbcType="BIGINT"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        goods_name,hot_mumber,goods_price,
+        goods_small_logo,goods_id,cat_one_id,
+        goods_cat,goods_introduce,goods_big_logo,
+        goods_number,is_promote,cat_two_id,
+        cat_id,is_del,goods_state,
+        upd_time,cat_three_id,add_time,
+        goods_weight
+    </sql>
+</mapper>

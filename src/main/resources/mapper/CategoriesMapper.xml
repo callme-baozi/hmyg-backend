@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.baozi.hmygbackend.mapper.CategoriesMapper">
+
+    <resultMap id="BaseResultMap" type="com.baozi.hmygbackend.entity.Categories">
+            <result property="catId" column="cat_id" jdbcType="BIGINT"/>
+            <result property="catName" column="cat_name" jdbcType="VARCHAR"/>
+            <result property="catPid" column="cat_pid" jdbcType="BIGINT"/>
+            <result property="catLevel" column="cat_level" jdbcType="BIGINT"/>
+            <result property="catDeleted" column="cat_deleted" jdbcType="TINYINT"/>
+            <result property="catIcon" column="cat_icon" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        cat_id,cat_name,cat_pid,
+        cat_level,cat_deleted,cat_icon
+    </sql>
+</mapper>

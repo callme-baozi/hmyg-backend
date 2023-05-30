@@ -1,0 +1,33 @@
+# 应用服务 WEB 访问端口
+server:
+  port: 7000
+  servlet:
+      context-path: /api
+spring:
+  application:
+    name: hmyg-backend
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/hmyg?useSSL=false
+    username: root
+    password: 1234
+
+## 指定Mybatis的Mapper文件
+mybatis-plus:
+  mapper-locations: classpath:mapper/*xml
+  configuration:
+    map-underscore-to-camel-case: true  # 开启数据库里面的命名也是带下划线的，查询数据返回注入到类中时转换为驼峰命名 mp是默认开启的？
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl # 开启在控制台输出sql语句
+
+# 使用自定义的sdk
+baozi:
+  client:
+    access-key: baozi
+    secret-key: itbaozi
+#server.port=7000
+#
+#spring.datasource.driver-class-name=com.mysql.jdbc.Driver
+#spring.datasource.url=jdbc:mysql://localhost:3306/hmyg?useSSL=false
+#spring.datasource.username=root
+
+#spring.datasource.password=1234

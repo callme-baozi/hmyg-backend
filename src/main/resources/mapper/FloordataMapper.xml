@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.baozi.hmygbackend.mapper.FloordataMapper">
+
+    <resultMap id="BaseResultMap" type="com.baozi.hmygbackend.entity.Floordata">
+            <result property="level" column="level" jdbcType="BIGINT"/>
+            <result property="name" column="name" jdbcType="VARCHAR"/>
+            <result property="imageSrc" column="image_src" jdbcType="VARCHAR"/>
+            <result property="imageWidth" column="image_width" jdbcType="VARCHAR"/>
+            <result property="openType" column="open_type" jdbcType="VARCHAR"/>
+            <result property="navigatorUrl" column="navigator_url" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        level,name,image_src,
+        image_width,open_type,navigator_url
+    </sql>
+</mapper>
