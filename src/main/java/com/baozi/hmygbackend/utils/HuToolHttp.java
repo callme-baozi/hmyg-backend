@@ -21,18 +21,18 @@ public class HuToolHttp {
     }
 
     public static void getGoodsDetail() throws IOException {
-        int i = 30000;
+        int i = 44518;
 //        String t_url = "https://www.uinav.com/api/public/v1/goods/detail?goods_id=";  // 旧地址
         String t_url = "https://api-hmugo-web.itheima.net/api/public/v1/goods/detail?goods_id=";
 
-        OutputStreamWriter osw = new OutputStreamWriter(new FileOutputStream("C:\\Users\\11493\\Desktop\\生活优购\\goodsDetail.txt"));
+        OutputStreamWriter osw = new OutputStreamWriter(new FileOutputStream("C:\\Users\\11493\\Desktop\\生活优购\\goodsDetail.txt",true));
         BufferedWriter bw = new BufferedWriter(osw);
 
-        OutputStreamWriter osw2 = new OutputStreamWriter(new FileOutputStream("C:\\Users\\11493\\Desktop\\生活优购\\attrs.txt", true));
-        BufferedWriter bw2 = new BufferedWriter(osw2);
-
-        OutputStreamWriter osw3 = new OutputStreamWriter(new FileOutputStream("C:\\Users\\11493\\Desktop\\生活优购\\pics.txt", true));
-        BufferedWriter bw3 = new BufferedWriter(osw3);
+//        OutputStreamWriter osw2 = new OutputStreamWriter(new FileOutputStream("C:\\Users\\11493\\Desktop\\生活优购\\attrs.txt", true));
+//        BufferedWriter bw2 = new BufferedWriter(osw2);
+//
+//        OutputStreamWriter osw3 = new OutputStreamWriter(new FileOutputStream("C:\\Users\\11493\\Desktop\\生活优购\\pics.txt", true));
+//        BufferedWriter bw3 = new BufferedWriter(osw3);
 
         while (i < 57446) {
             String url = t_url + i; // 拼接网址
@@ -53,28 +53,28 @@ public class HuToolHttp {
 
             bw.write(content + "\n"); // 写入文件并换行
 
-            JSONArray attrs = detail.getJSONArray("attrs"); // 获取列表字段的内容 写入文件
-            for (Object roleId : attrs) {
-                JSONObject attr = JSON.parseObject(roleId.toString());
-                String s = JSON.toJSONString(attr, SerializerFeature.PrettyFormat, SerializerFeature.WriteMapNullValue,
-                        SerializerFeature.WriteDateUseDateFormat);
-                bw2.write(s + "\n");
-            }
-
-            JSONArray pics = detail.getJSONArray("pics");
-            for (Object roleId : pics) {
-                JSONObject pic = JSON.parseObject(roleId.toString());
-                String s = JSON.toJSONString(pic, SerializerFeature.PrettyFormat, SerializerFeature.WriteMapNullValue,
-                        SerializerFeature.WriteDateUseDateFormat);
-                bw3.write(s + "\n");
-            }
+//            JSONArray attrs = detail.getJSONArray("attrs"); // 获取列表字段的内容 写入文件
+//            for (Object roleId : attrs) {
+//                JSONObject attr = JSON.parseObject(roleId.toString());
+//                String s = JSON.toJSONString(attr, SerializerFeature.PrettyFormat, SerializerFeature.WriteMapNullValue,
+//                        SerializerFeature.WriteDateUseDateFormat);
+//                bw2.write(s + "\n");
+//            }
+//
+//            JSONArray pics = detail.getJSONArray("pics");
+//            for (Object roleId : pics) {
+//                JSONObject pic = JSON.parseObject(roleId.toString());
+//                String s = JSON.toJSONString(pic, SerializerFeature.PrettyFormat, SerializerFeature.WriteMapNullValue,
+//                        SerializerFeature.WriteDateUseDateFormat);
+//                bw3.write(s + "\n");
+//            }
 
             System.out.println("第" + i + "条写入成功");
             i++;
         }
         bw.close();
-        bw2.close();
-        bw3.close();
+//        bw2.close();
+//        bw3.close();
     }
 
 }

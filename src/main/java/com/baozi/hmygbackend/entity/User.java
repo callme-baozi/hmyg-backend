@@ -17,6 +17,7 @@ public class User implements Serializable {
     /**
      * 
      */
+    @TableId(type = IdType.AUTO)
     private Long userId;
 
     /**
@@ -58,6 +59,8 @@ public class User implements Serializable {
      * 
      */
     private String avatarUrl;
+
+    private String openId;
 
     @TableField(exist = false)
     private static final long serialVersionUID = 1L;

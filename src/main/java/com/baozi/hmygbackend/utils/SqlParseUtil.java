@@ -16,7 +16,7 @@ public class SqlParseUtil {
         String tableName = "tb_goods_detail"; // 表名
         String readFile = "C:\\Users\\11493\\Desktop\\生活优购\\goodsDetail.txt"; // 读取文件路劲
         String writeFile = "C:\\Users\\11493\\Desktop\\生活优购\\goodsDetail.sql"; // 写入文件路劲
-        createSQLFile(tableName, readFile, writeFile);
+        goodsDetail(tableName, readFile, writeFile);
         System.out.println("结束");
         System.out.println("setLengthTest()耗时:" + (System.currentTimeMillis() - startTime) + "ms");
     }
@@ -26,7 +26,7 @@ public class SqlParseUtil {
                 InputStreamReader isr = new InputStreamReader(new FileInputStream(readFile));
                 BufferedReader br = new BufferedReader(isr);
 
-                OutputStreamWriter osw = new OutputStreamWriter(new FileOutputStream(writeFile));
+                OutputStreamWriter osw = new OutputStreamWriter(new FileOutputStream(writeFile,true));
                 BufferedWriter bw = new BufferedWriter(osw);
         ) {
             String line = null;
@@ -118,7 +118,7 @@ public class SqlParseUtil {
                 InputStreamReader isr = new InputStreamReader(new FileInputStream(readFile));
                 BufferedReader br = new BufferedReader(isr);
 
-                OutputStreamWriter osw = new OutputStreamWriter(new FileOutputStream(writeFile));
+                OutputStreamWriter osw = new OutputStreamWriter(new FileOutputStream(writeFile,true));
                 BufferedWriter bw = new BufferedWriter(osw);
         ) {
             String line = null;

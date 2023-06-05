@@ -10,6 +10,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 import java.util.Map;
 
@@ -22,7 +23,7 @@ public class CartController {
 
 
     @PostMapping("/addProdToCart")
-    public R<Object> addProdToCart(@RequestBody GoodsCartDto goodsCartDto) {
+    public R<Object> addProdToCart(@RequestBody GoodsCartDto goodsCartDto, HttpServletRequest request) {
 //        goodsCartDto.setUserId(101l);
 //        System.out.println(goodsCartDto);
         if (goodsCartDto.getUserId() == null) {
@@ -33,13 +34,29 @@ public class CartController {
             log.info("goods_id 数据为空");
             return R.error("goods_id 数据为空");
         }
-        Integer count = cartService.saveCart(goodsCartDto);
-        if (count < 1) {
-            log.info("添加到购物车失败");
-            return R.error("添加到购物车失败");
+        // 查询购物车是够有该商品
+        String userId = request.getHeader("user_id");
+        LambdaQueryWrapper<GoodsCartDto> queryWrapper = new LambdaQueryWrapper<>();
+        queryWrapper.eq(GoodsCartDto::getGoodsId, goodsCartDto.getGoodsId())
+                .eq(GoodsCartDto::getUserId, userId);
+        GoodsCartDto cartDto = cartService.getOne(queryWrapper);
+        if (cartDto == null) { // 没有记录。添加商品
+            Integer count = cartService.saveCart(goodsCartDto);
+            if (count < 1) {
+                log.info("添加到购物车失败");
+                return R.error("添加到购物车失败");
+            }
+            return R.success("添加成功", "获取成功");
         }
-
+        // 有记录。数量加1
+        LambdaUpdateWrapper<GoodsCartDto> updateWrapper = new LambdaUpdateWrapper<>();
+        System.out.println(cartDto.getGoodsCount());
+        updateWrapper.set(GoodsCartDto::getGoodsCount, cartDto.getGoodsCount() + 1)
+                .eq(GoodsCartDto::getGoodsId, goodsCartDto.getGoodsId())
+                .eq(GoodsCartDto::getUserId, userId);
+        cartService.update(updateWrapper);
         return R.success("添加成功", "获取成功");
+
     }
 
     @GetMapping("/getCartList")
