@@ -243,7 +243,7 @@ gitee怎么同步呢？
 
 CentoOs 7.9
 
-- 管理员：root  密码：Wananta5633650
+- 管理员：root  密码：********* （需要包含字母大小写和数字）
 - 公网IP ：111.230.69.234
 - 用户：lighthouse 免密登陆
 - 安装 mysql 初始密码： uj.bv96gDTy5
