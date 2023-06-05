@@ -1,6 +1,6 @@
 # hmyg-backend
 黑马优购-->在此基础上进一步修改-->生活优购，为此搭建的后端，springboot框架
-## 小程序页面
+## 小程序部分页面
 ![1_login](https://github.com/callme-baozi/hmyg-front/blob/master/static/1_login.png)
 ![2_cart](https://github.com/callme-baozi/hmyg-front/blob/master/static/2_cart.png)
 ![3_home](https://github.com/callme-baozi/hmyg-front/blob/master/static/3_home.png)
